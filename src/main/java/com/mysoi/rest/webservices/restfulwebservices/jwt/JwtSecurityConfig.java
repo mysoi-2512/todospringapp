@@ -46,14 +46,14 @@ public class JwtSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
         
     	return httpSecurity
-                .csrf(AbstractHttpConfigurer::disable) // (1)
+                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(
                         session -> 
                             session.sessionCreationPolicy(
-                                SessionCreationPolicy.STATELESS)) // (2)
+                                SessionCreationPolicy.STATELESS)) 
                 .authorizeHttpRequests(
                         auth -> 
-                            auth.requestMatchers("/", //#CHANGE
+                            auth.requestMatchers("/", 
                             		"/authenticate", "/actuator", "/actuator/*")
                                 .permitAll()
                                 .requestMatchers("/h2-console/**")
@@ -61,8 +61,8 @@ public class JwtSecurityConfig {
                                 .requestMatchers(HttpMethod.OPTIONS,"/**")
                                 .permitAll()
                                 .anyRequest()
-                                .authenticated()) // (3)
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults())) // (4)
+                                .authenticated()) 
+                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults())) 
                 .exceptionHandling(
                         (ex) -> 
                             ex.authenticationEntryPoint(
