@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'todospring'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1C20F1ECCE9244E181AC33783B50975A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B7F39D7B94954FF5A8E13243588B200A }}
           package: '*.jar'
